@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Installing a MyBee  on Hetzner </title>
+
+  <meta name="author" content="">
+  <meta property="og:title" content="Installing a MyBee cluster on Hetzner" />
+  <meta property="og:description" content="Installing a MyBee cluster on Hetzner" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://myb.convectix.com/hetzner/" />
+  <link rel="canonical" href="https://myb.convectix.com/hetzner/">
+</head>
+
+
+<body class="page-kube">
+  <header> <div class="show-sm">
+    <div id="nav-toggle-box">
+    </div>
+  </div>
+  <div class="hide-sm" id="top">
+    <div id="top-brand">
+      <a href="/" title="home">MyBee</a>
+    </div>
+  </div>
+ </header>
+  <main>
+
+<div id="hero" class="wrap">
+  <h1>Installing a MyBee on Hetzner</h1>
+    <p></p>
+</div>
+<ul id="posts">
+
+ <h3 id="system-requirements">System requirements:</h3>
+<ul>
+<li>AMD/Intel x86-64 CPU with VT-x enabled</li>
+<li>4GB+ RAM</li>
+<li>At least 20GB HDD</li>
+</ul>
+
+<h3 id="installation">Installation:</h3>
+<blockquote class="warning callout">
+  <div><strong></strong> Warning! These instructions cause information to be lost from the computer on which they are executed and install the new operating system on your disks.</div>
+</blockquote>
+<br>
+
+<ol>
+<li>
+<p>First, you must reboot your Hetzner server into rescue. Make sure you choose the correct architecture and OS:</p></li>
+<p><img src="/img/mybee_hz1.png" alt="image"></p>
+</li>
+</ol>
+
+<ol start="2">
+<li>
+<p>
+After rebooting the server and accessing the shell as root, use the &lsquo;fetch&rsquo; command to get the installation script:
+</p>
+<p><strong>fetch <a href="https://myb.convectix.com.ru/auto">https://myb.convectix.com/auto</a></strong></p>
+<p>The script is written in shell, so you can run it through the shell:</p>
+<p><strong>sh auto</strong></p>
+<p><img src="/img/mybee_hz2.png" alt="image"></p>
+</li>
+</ol>
+
+
+<ol start="3">
+<li>
+<p>If you are familiar with the vd installer, you will be familiar with the next steps.
+Just select options until you get to the user creation setup:
+</p>
+<p><img src="/img/mybee_hz3.png" alt="image"></p>
+</li>
+</ol>
+
+<ol start="4">
+<li>
+<p>:<br></p>
+<p><img src="/img/mybee_hz4.png" alt="image"></p>
+</li>
+</ol>
+
+<ol start="5">
+<li>
+<p>:<br></p>
+<p><img src="/img/mybee_hz5.png" alt="image"></p>
+</li>
+</ol>
+
+<ol start="6">
+<li>
+<p>Of course, you can choose the options that are more suitable for you:</p>
+<p><img src="/img/mybee_hz6.png" alt="image"></p>
+</li>
+</ol>
+
+
+<ol start="7">
+<li>
+<p>
+Here is a setup for a server that has only two disks:
+</p>
+<p><img src="/img/mybee_hz7.png" alt="image"></p>
+</ol>
+
+
+<ol start="8">
+<li>
+<p>
+This is a last change!
+</p>
+<p><img src="/img/mybee_hz8.png" alt="image"></p>
+</li>
+</ol>
+
+<ol start="9">
+<li>
+<p>
+Choose a strong password for your &lsquo;root&rsquo; account. By default, it is not available through the ssh:
+</p>
+<p><img src="/img/mybee_hz9.png" alt="image"></p>
+</li>
+</ol>
+
+
+<ol start="10">
+<li>
+<p>
+We only have one physical interface on the host:
+</p>
+<p><img src="/img/mybee_hz10.png" alt="image"></p>
+</ol>
+
+
+<ol start="11">
+<li>
+<p>:
+</p>
+<p><img src="/img/mybee_hz11.png" alt="image"></p>
+</li>
+</ol>
+
+
+<ol start="12">
+<li>
+<p>
+Of course, you may prefer to configure your network connection statically. Answer &lsquo;no&rsquo; in this case:
+</p>
+<p><img src="/img/mybee_hz12.png" alt="image"></p>
+</li>
+</ol>
+
+<ol start="13">
+<li>
+<p>:
+</p>
+<p><img src="/img/mybee_hz13.png" alt="image"></p>
+</li>
+</ol>
+
+<ol start="14">
+<li>
+<p>
+You need a correctly configured DNS. You can use public servers from Google ( <strong>8.8.8.8, 8.8.4.4</strong> ) if there are no better options:
+</p>
+<p><img src="/img/mybee_hz14.png" alt="image"></p>
+</li>
+</ol>
+
+
+<ol start="15">
+<li>
+<p>
+Choose a time zone that is comfortable for you:
+</p>
+<p><img src="/img/mybee_hz15.png" alt="image"></p>
+</li>
+</ol>
+
+
+<ol start="16">
+<li>
+<p>:
+</p>
+<p><img src="/img/mybee_hz16.png" alt="image"></p>
+</li>
+</ol>
+
+<ol start="17">
+<li>
+<p>
+By default, root user access is blocked by ssx, so we need an additional user:
+</p>
+<p><img src="/img/mybee_hz17.png" alt="image"></p>
+</li>
+</ol>
+
+
+<ol start="18">
+<li>
+<p>
+Don&rsquo;t forget to specify an additional group for your user as a &lsquo;<strong>wheel</strong>&rsquo;, otherwise you won&rsquo;t be able to switch to <strong>root</strong> user (su, sudo):
+</p>
+<p><img src="/img/mybee_hz18.png" alt="image"></p>
+</ol>
+
+<ol start="19">
+<li>
+<p>
+We got everything we wanted, now we can leave the bsdinstall:
+</p>
+<p><img src="/img/mybee_hz19.png" alt="image"></p>
+</li>
+</ol>
+
+<ol start="20">
+<li>
+<p>
+Choose &lsquo;no&rsquo; to return to Hetzner rescue shell:
+</p>
+<p><img src="/img/mybee_hz20.png" alt="image"></p>
+</li>
+</ol>
+
+<ol start="21">
+<li>
+<p>
+Now you can reboot your system to <strong>MyBee</strong>, type in 'shell':
+</p>
+<p><strong>shutdown -r now</strong></p>
+</li>
+</ol>
+
+
+<ol start="22">
+<li>
+<p>
+When the host is back, go to it via ssh and wait for the broadcast message that the configuration is complete.
+Reboot the server again. When the server returns, you can start using it. Start with <strong>http://&lt;SERVER_IP&gt;</strong>
+</p>
+</li>
+</ol>
+<br>
+<p>Before first use, you may want to initialize (warm) images. To do this, use the 'root' access and run the command, depending on the images you use: <strong>'centos7', 'centos8', 'ubuntu', 'debian', 'freebsd_ufs', 'freebsd_zfs', 'openbsd', 'netbsd'</strong>.
+</p>
+<p><img src="/img/myb_fetch.png" alt="image"></p>
+<p>
+<br>
+Please <a target="_blank" href="https://www.bsdstore.ru/en/cbsd_api_ssi.html#bapi_curl">Refer page</a> for a working example.
+</p>
+
+</div>
+
+</blockquote>
+
+
+</ul>
+</main>
+</body>
+
+</html>
